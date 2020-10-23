@@ -16,7 +16,7 @@
 		<label>Password :</label>
 		<input id="password" name="password" placeholder="**********" type="password"><br><br>
 		<input name="submit" type="submit" value="login">
-		<span><?php echo $error; ?></span>
+		<input type = "button" value="Register">
 		</form>
 	</div>
 </body>
