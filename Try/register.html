@@ -1,0 +1,117 @@
+<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+<script type=text/javascript>
+    //w();
+    function w() {
+    //alert("kkk");
+    var form_data = new FormData($('#aws-lambda')[0]);
+    $.ajax({
+        
+	url: 'https://tyqz4jfmdh.execute-api.us-east-2.amazonaws.com/try/employee',
+	crossDomain: true,
+	contentType:"json",
+	headers: { 
+        'Content-Type': 'text/plain'
+
+        },
+    
+        type: 'POST',
+		dataType: "json",
+        
+	//data:JSON.stringify({"number":document.getElementById('Raspberry_ID').value}),
+	data:JSON.stringify({"employeeID":document.getElementById('EmployeeID').value, "name":document.getElementById('employeeName').value,"email":document.getElementById('employeeEmail').value, "password":document.getElementById('employeePassword').value, "role":document.getElementById('employeeRole').value}),
+    success: function(data) {
+			var statuscode=JSON.stringify(data.statusCode)
+			if(statuscode==201)
+			{
+				location.href = "login.html"
+			}
+			else
+			{
+				alert("Something went wrong")
+			}
+            //alert(JSON.stringify(data));
+            //$('body').html=text;
+            //var RaspberryId = parseInt(data.body.Raspberry_Id)
+            //document.getElementById('r').value=JSON.stringify(parseInt(data.body.Raspberry_Id));
+           // document.getElementById('d').value=JSON.stringify(parseInt(data.body.Received_Data)+ " Cm");
+            //setTimeout(w, 200);
+    },
+    });
+	return false;
+}
+</script>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Registration Form</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		<link href="reg.css" rel="stylesheet" type="text/css" media="all" />
+		<script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+	</head>
+	<body>
+		<div class="main wrapper">
+		<h1>REGISTRATION FORM</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form action="#" id="aws-lambda" onsubmit="return false;" method="post">
+					<input class="text" type="text" id="EmployeeID" name="empid" placeholder="Enter Employee ID" required=""><br><br>
+					<input class="text" type="text" id="employeeName" name="name" placeholder="Name" required=""> 
+					<input class="text email" type="email" id="employeeEmail" name="email" placeholder="Employee Email" required="">
+					<input class="text" type="password" id= "employeePassword" name="password" placeholder="Enter Password"id="psw" name="psw" required=""> 
+					<input class="text w3lpass" type="password" name="password" id="psw" name="psw" placeholder="Confirm Password" id="myInput" required="">
+					<input class="text" type="text" id="employeeRole" name="emprole" placeholder="Enter Employee Role" required=""><br><br>
+					<input type="checkbox" onclick="myFunction()">Show Password
+
+					<div class="wthree-text">
+						<div class="clear"> </div>
+					</div>
+					<input type="submit" value="SIGNUP" onclick="w()">
+				</form>
+
+				<p>Already Have an Account? <a href="login.html"> Login Now!</a></p>
+			</div>
+		</div>
+
+		<ul class="colorlib-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+
+	<script>
+		function myFunction() {
+		  var x = document.getElementById("psw");
+		  var y = document.getElementById("employeePassword")
+		  if (x.type == "password" && y.type == "password") {
+			x.type = "text";
+			y.type = "text";
+		  } else {
+			x.type = "password";
+			y.type = "password";
+		  }
+		}
+	</script>
+
+	<button id="myButton" class="float-left submit-button" >Home</button>
+	<script type="text/javascript">
+		document.getElementById("myButton").onclick = function () {
+			location.href = "index.html";
+
+		};
+	</script>
+</body>
+</html>

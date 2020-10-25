@@ -1,0 +1,113 @@
+<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+<script type=text/javascript>
+    //w();
+    function w() {
+    var empID = document.getElementById('lid').value;
+    var API = 'https://tyqz4jfmdh.execute-api.us-east-2.amazonaws.com/try/employee/?employeeID='+empID; 
+    console.log(API);
+    //alert("kkk");
+	var form_data = new FormData($('#aws-lambda')[0]);
+    $.ajax({
+	url: API,
+	crossDomain: true,
+	contentType:"json",
+	headers: { 
+        'Content-Type': 'application/json'
+        },
+    type: 'GET',
+    dataType: "json",
+
+    success: function(data) {
+		
+		var statuscode=JSON.stringify(data.statusCode);
+		var ids = JSON.stringify(data.body);
+		var isa = JSON.parse(ids);
+		var ii = JSON.stringify(isa.responseBody.Item.employeeID);
+		var id3 = JSON.stringify(isa.responseBody.Item.employeepasswd);
+		
+		id3 = (id3.replace(/"([^"]+(?="))"/g, '$1'));
+		//var ids2 = JSON.stringify(data.employeepasswd);
+		//console.log(statuscode);
+		//console.log(isa);
+		//console.log(id3);
+		var id =document.getElementById('lid').value;
+		var id2 =document.getElementById('lpassword').value;
+		//console.log(id2);
+		if(statuscode==204){
+			if(id3 == id2){
+				console.log('correct password');
+				location.href = "home.html";
+			}else{
+				alert('incorrect password');	
+		}
+			//var a=readCookie("Raspberry_Id");
+			//alert(a)*/
+			//Cookies.set("Raspberry_Id",document.getElementById('Raspberry_Id').value, {expiry : 3600});
+			//var Raspberry_Id=  Cookies.get(Raspberry_Id");
+			//alert("Setting Cookies : " + "name=" + cookievalue );
+			//location.href = "display.html"
+		}else{
+			alert("Enter Right Credentials");
+		}
+    },
+    });
+	return false;
+}
+</script>
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Login Form</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		<link href="reg.css" rel="stylesheet" type="text/css" media="all" />
+		<script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+	</head>
+
+	<body>
+		<div class="main wrapper">
+			<h1>LOGIN FORM</h1>
+			<div class="main-agileinfo">
+				<div class="agileits-top">
+					<form action="#" name="myform" onsubmit="return false;" method="post">
+						<input class="text" type="text" id="lid" name="lid" placeholder="Employee ID" required="">
+						<input class="text" type="password" id="lpassword" name="lpassword" placeholder="Password" value="" id="myInput" required=""><br><br>
+						<input type="checkbox" onclick="myFunction()">Show Password
+						<input type="submit" value="Login" onclick="w()">
+					</form>	
+				</div>
+			</div>
+			
+			<ul class="colorlib-bubbles">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		
+	<script>
+		function myFunction() {
+		var x = document.getElementById("lpassword");
+		if (x.type === "password") {
+			x.type = "text";
+		} else {
+			x.type = "password";
+		}
+		}
+	</script>
+
+	</body>
+</html> 

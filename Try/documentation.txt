@@ -1,0 +1,125 @@
+First Step
+- Download all neccessary aws package
+    - javascript dependencies and python dependencies
+- Draw out a plan
+- Create A Dynamo Table
+- Create Lambda Function
+- Create Role for Lambda Function to connect to Dynamo
+- Test out using hardcoded values
+
+
+Table Structure
+    User:
+        - employeeid
+        - name
+        - email
+        - password
+        - role
+
+
+
+download dependencies
+# install node.js and npm
+- npm install aws-sdk
+# always add to the html page
+- <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+
+#create Table
+- arn:aws:dynamodb:us-east-2:918287097220:table/EmployeeDB
+
+#createRole
+- putItem : add item
+- updateItem : update db
+- deleteItem : delete item
+- scan : get all item
+
+#create LambdaFunction
+- add existing role
+- Test  
+    - deploy before testing
+
+
+Status code
+sucessful:
+    addEmployee:201
+    deleteEmployee:204 
+    updateEmployee: 203
+    getEmployee: 200
+
+Error:
+    addEmployee: 401
+    deleteEmployee: 404
+    updateEmployee:403
+    getEmployee: 400
+
+
+Creating API
+# determine what the resources will look like 
+
+addEmployee
+domain.com/employee/{id}
+
+deleteEmployee
+domain.com/employee/{id}
+
+getEmployee
+domain.com/employee
+
+updateEmployee
+domain.com/employee/{id}
+
+
+
+Content-Type
+application/json
+
+"Content-Type":"application/json"
+
+
+API URL: https://tyqz4jfmdh.execute-api.us-east-2.amazonaws.com/try
+
+{
+  "employeeID": "value1",
+  "name": "value2",
+  "email": "value3",
+  "password": "valie4",
+  "role": "value5"
+}
+
+
+Test ALl API
+
+Edit html
+
+id for all textbox
+- EmployeeID
+- employeeName
+- employeeEmail
+- employeePassword
+- psw
+- employeeRole
+
+
+/* document.getElementById("getprofile").onclick =function(){
+        $.ajax({
+        url: 'https://tyqz4jfmdh.execute-api.us-east-2.amazonaws.com/try/employees',
+        crossDomain: true,
+        type: 'GET',
+        contentType:"json",
+	    headers: { 
+            'Content-Type': 'application/json'
+        },
+        success: function(response) {
+            $('#employeeProfile tr').slice(1).remove();
+            jquery.each(response, function(i, data) {
+                $("#employeeProfile").append("<tr> \
+                    <td>" + data['employeeID'] + "</td> \
+                    <td>" + data['employeename'] + "</td> \
+                    <td>" + data['employeeemail'] + "</td> \
+                    <td>" + data['employeepasswd'] + "</td> \
+                    <td>" + data['employeerole'] + "</td> \
+                    </tr>");
+            });
+        }
+        });
+    }*/

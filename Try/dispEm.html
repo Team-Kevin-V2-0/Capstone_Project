@@ -1,0 +1,85 @@
+<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type=text/javascript>
+
+   /* document.getElementById("getprofile").onclick =function(){
+        $.ajax({
+        url: 'https://tyqz4jfmdh.execute-api.us-east-2.amazonaws.com/try/employees',
+        crossDomain: true,
+        type: 'GET',
+        contentType:"json",
+	    headers: { 
+            'Content-Type': 'application/json'
+        },
+        success: function(response) {
+            $('#employeeProfile tr').slice(1).remove();
+            jquery.each(response, function(i, data) {
+                $("#employeeProfile").append("<tr> \
+                    <td>" + data['employeeID'] + "</td> \
+                    <td>" + data['employeename'] + "</td> \
+                    <td>" + data['employeeemail'] + "</td> \
+                    <td>" + data['employeepasswd'] + "</td> \
+                    <td>" + data['employeerole'] + "</td> \
+                    </tr>");
+            });
+        }
+        });
+    }*/
+    $(document).ready(function() {
+        $.ajax({
+        url: 'https://tyqz4jfmdh.execute-api.us-east-2.amazonaws.com/try/employees',
+        crossDomain: true,
+        type: 'GET',
+        contentType:"json",
+	    headers: { 
+            'Content-Type': 'application/json'
+        },
+        success: function(data){
+            //alert(data);
+            console.log(data);
+            $.each(data.body, function(i, value){
+                var  employee = "<tr><td>" + (i +1)+ 
+                    "</td><td>" + value.employeeID + "</td><td>"+
+                        value.employeename + "</td><td>" +
+                        value.employeeemail + "</td><td>" +
+                        value.employeepasswd + "</td><td>" +
+                        value.employeerole + "</td><td>";
+                    $("#employeeProfile").append(employee);
+            });
+        },
+        dataType: 'json'  
+    });
+    });
+</script>
+<html>
+    <head>
+        <title>DISPLAY USERS</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <!-- Custom Theme files -->
+        <link href="reg.css" rel="stylesheet" type="text/css" media="all" />
+        <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+        </head>
+        <body>
+            <div align="center">
+                <table id="employeeProfile">
+                            <tr>
+                                <th>SN ID&nbsp;</th>
+                                <th>Employee ID&</th>
+                                <th>Employee name</th>
+                                <th>Employee Email</th>
+                                <th>Employee Password</th>
+                                <th>Employee Role</th>
+                            </tr>
+                    </table>
+            </div>
+            <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        </body>
+        </html>
+

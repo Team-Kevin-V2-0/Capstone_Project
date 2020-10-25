@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type=text/javascript>
+
+     $(document).ready(function() {
+         $.ajax({
+         url: 'https://plt5iufcl5.execute-api.us-east-2.amazonaws.com/APIDeploy1/storage',
+         crossDomain: true,
+         type: 'GET',
+         contentType:"json", 
+         headers: { 
+             'Content-Type': 'application/json'
+         },
+         success: function(data){
+             //alert(data);
+             console.log(data);
+             $.each(data.body, function(i, value){
+                 var  hardD = "<tr><td>" + (i +1)+ 
+                     "</td><td>" + value.Simulator + "</td><td>"+
+                         value.SN + "</td><td>" +
+                         value.Info.computer +"</td><td>";
+                     $("#showHardDrive").append(hardD);
+             });
+         },
+         dataType: 'json'  
+     });
+     });
+ </script>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href="reg.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+</head>
+<body>
+    <div align="center">
+        <div id="showHardDrive">
+            <table id="showHardDrive">
+                <colgroup>
+                    <col style="width:20%">
+                    <col style="width:20%">
+                    <col style="width:20%">
+                    <col style="width:20%">
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th>SN ID</th>
+                        <th>Simulator</th>
+                        <th>SN</th>
+                        <th>Info</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>>
+
+</body>
+</html>
