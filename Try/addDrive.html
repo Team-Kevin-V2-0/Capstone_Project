@@ -1,0 +1,93 @@
+<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+<script type=text/javascript>
+    //w();
+    function w() {
+    //alert("kkk");
+    var form_data = new FormData($('#aws-lambda')[0]);
+    $.ajax({
+        
+	url: 'https://plt5iufcl5.execute-api.us-east-2.amazonaws.com/APIDeploy1/storage',
+	crossDomain: true,
+	contentType:"json",
+	headers: { 
+        'Content-Type': 'text/plain'
+
+        },
+    
+        type: 'POST',
+		dataType: "json",
+        
+	//data:JSON.stringify({"number":document.getElementById('Raspberry_ID').value}),
+	data:JSON.stringify({"Simulator":document.getElementById('simulatorID').value, "SN":document.getElementById('snID').value,"Info.Computer":document.getElementById('computerID').value, "Info.Size":document.getElementById('sizeID').value, "Info.Typ":document.getElementById('typeID').value, "Info.Cyc":"Trainign", "Info.Date":"Date"}),
+    success: function(data) {
+            var statuscode=JSON.stringify(data.statusCode)
+            console.log(data);
+			if(statuscode==201)
+			{
+                location.href = "emailAdmin.html";
+                console.log("hhhh");
+			}
+			else
+			{
+				alert("Something went wrong");
+			}
+            //alert(JSON.stringify(data));
+            //$('body').html=text;
+            //var RaspberryId = parseInt(data.body.Raspberry_Id)
+            //document.getElementById('r').value=JSON.stringify(parseInt(data.body.Raspberry_Id));
+           // document.getElementById('d').value=JSON.stringify(parseInt(data.body.Received_Data)+ " Cm");
+            //setTimeout(w, 200);
+    },
+    });
+	return false;
+}
+</script>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ADD Hard Drive</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		<link href="reg.css" rel="stylesheet" type="text/css" media="all" />
+		<script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+	</head>
+	<body>
+		<div class="main wrapper">
+		<h1>Add Drive</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form action="#" id="aws-lambda" onsubmit="return false;" method="post">
+					<input class="text" type="text" id="simulatorID" name="simulator" placeholder="Enter Simulator" required=""><br><br>
+					<input class="text" type="text" id="snID" name="sn" placeholder="Enter Serial Number" required=""><br><br> 
+					<input class="text" type="text" id="computerID" name="computer" placeholder="Enter Computer" required=""><br><br>
+                    <input class="text" type="text" id="sizeID" name="size" placeholder="Enter Hard Drive Size" required=""><br><br>
+                    <input class="text" type="text" id="typeID" name="type" placeholder="Enter Hard Drive Type" required=""><br><br>
+                    <p id="date"></p>
+					<div class="wthree-text">
+						<div class="clear"> </div>
+					</div>
+					<input type="submit" value="ADD HARD DRIVE" onclick="w()">
+				</form>
+			</div>
+		</div>
+
+		<ul class="colorlib-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+</html>
