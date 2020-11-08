@@ -8,12 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.778.0.min.js"></script>
         <script type="text/javascript">
-            AWS.config.update({
-              region: "us-east-2",
-              accessKeyId: "AKIA5LTRNDWCCMHPC4AJ",
-              secretAccessKey: "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"
-            });
-
+        
             var dynamodb = new AWS.DynamoDB();
             var docClient = new AWS.DynamoDB.DocumentClient();
 
