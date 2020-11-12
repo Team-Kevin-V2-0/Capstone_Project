@@ -1,14 +1,20 @@
+<!--
+ Jquery CDN   
+-->
 <script
   src="https://code.jquery.com/jquery-1.12.4.min.js"
   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
   crossorigin="anonymous"></script>
+
+  <!--
+ Login Javascript function 
+-->
 <script type=text/javascript>
-    //w();
+	//function on click
     function w() {
     var empID = document.getElementById('lid').value;
     var API = 'https://tyqz4jfmdh.execute-api.us-east-2.amazonaws.com/try/employee/?employeeID='+empID; 
-    console.log(API);
-    //alert("kkk");
+    //console.log(API);
 	var form_data = new FormData($('#aws-lambda')[0]);
     $.ajax({
 	url: API,
@@ -27,15 +33,10 @@
 		var isa = JSON.parse(ids);
 		var ii = JSON.stringify(isa.responseBody.Item.employeeID);
 		var id3 = JSON.stringify(isa.responseBody.Item.employeepasswd);
-		
+		//remove quotes
 		id3 = (id3.replace(/"([^"]+(?="))"/g, '$1'));
-		//var ids2 = JSON.stringify(data.employeepasswd);
-		//console.log(statuscode);
-		//console.log(isa);
-		//console.log(id3);
 		var id =document.getElementById('lid').value;
 		var id2 =document.getElementById('lpassword').value;
-		//console.log(id2);
 		if(statuscode==204){
 			if(id3 == id2){
 				//console.log('correct password');
@@ -43,17 +44,11 @@
 					//alert("hello");
 					location.href = "home.html";
 				}else{
-					location.href = "landingPage2.html";
+					location.href = "viewAll.html";
 				}
 			}else{
 				alert('incorrect password');	
 		}
-			//var a=readCookie("Raspberry_Id");
-			//alert(a)*/
-			//Cookies.set("Raspberry_Id",document.getElementById('Raspberry_Id').value, {expiry : 3600});
-			//var Raspberry_Id=  Cookies.get(Raspberry_Id");
-			//alert("Setting Cookies : " + "name=" + cookievalue );
-			//location.href = "display.html"
 		}else{
 			alert("Enter Right Credentials");
 		}
@@ -81,7 +76,7 @@
 			<div class="main-agileinfo">
 				<div class="agileits-top">
 					<form action="#" name="myform" onsubmit="return false;" method="post">
-						<input class="text" type="text" id="lid" name="lid" placeholder="Employee ID" required="">
+						<input class="text" type="text" id="lid" name="lid" placeholder="Employee ID" required=""><br><br>
 						<input class="text" type="password" id="lpassword" name="lpassword" placeholder="Password" value="" id="myInput" required=""><br><br>
 						<input type="checkbox" onclick="myFunction()">Show Password
 						<input type="submit" value="Login" onclick="w()">
@@ -89,18 +84,7 @@
 				</div>
 			</div>
 			
-			<ul class="colorlib-bubbles">
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-			</ul>
+			
 		</div>
 		
 	<script>

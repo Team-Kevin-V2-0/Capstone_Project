@@ -123,3 +123,16 @@ id for all textbox
         }
         });
     }*/
+
+
+     $.each(data.body, function(i, value){
+            var  hardD = "<tr><td>" + (i +1)+ 
+                "</td><td>" + value.Simulator + 
+                "</td><td>"  +  value.SN + 
+                "</td><td>" +  value.Info.Computer +
+                "</td><td>"+value.Info.Cyc +
+                "</td><td>"+value.Info.Date+
+                "</td><td>"+value.Info.Size+
+                "</td><td>"+value.Info.Typ+"</td><td>";
+                     $("#showHardDrive").append(hardD);
+        });

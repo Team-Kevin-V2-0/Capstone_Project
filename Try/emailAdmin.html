@@ -1,1 +1,95 @@
-emailAdmin.html
+<!DOCTYPE html>
+<!--Front End for Lamba Functions (https://www.youtube.com/watch?v=mfAT38B_uhw&t=416s)-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+    function w(){
+        var form_data = new FormData($('#aws-lambda')[0]);
+        $form = $(this);
+        $.ajax({
+                url:'https://plt5iufcl5.execute-api.us-east-2.amazonaws.com/APIDeploy1/sendemail',
+                crossDomain: true,
+                contentType:"json",
+                headers: { 
+                    'Content-Type': 'text/plain'
+                },
+                type: 'POST',
+                dataType: "json",
+                data:$form.serialize(),
+                success: function(data) {
+                        var statuscode=JSON.stringify(data.statusCode)
+                        if(statuscode==200)
+                        {
+                            location.href = "login.html"
+                            console.log(data);
+                        }
+                        else
+                        {
+                            alert("Something went wrong")
+                        }
+                },
+        });
+        return false;
+}
+</script>
+
+<html lang="en">
+    <head>
+		<title>Send Email</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		<link href="reg.css" rel="stylesheet" type="text/css" media="all" />
+		<script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+    </head>
+    
+    <body>
+		<div class="main wrapper">
+            <br><br>
+		<h1>Send Email</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form action="#" id="aws-lambda" onsubmit="return false;" method="post">
+                    <input class="text" type="text" id="empID" name="EmployeeID" placeholder="Enter Your ID Number" required=""><br><br>
+                    <input class="text email" type="email" id="employeeEmail" name="email" placeholder="Enter your Email" required=""><br>
+					<div class="wthree-text">
+						<div class="clear"> </div>
+					</div>
+					<input type="submit" value="SEND UPDATE" onclick="w()">
+				</form>
+			</div>
+		</div>
+
+		<ul class="colorlib-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
