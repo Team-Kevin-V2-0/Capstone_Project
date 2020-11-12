@@ -30,6 +30,29 @@
             });
         });
 }
+        
+        $(document).ready(function() {
+        $('#add').on('click', function() {
+
+            $.post("https://plt5iufcl5.execute-api.us-east-2.amazonaws.com/APIDeploy1/storage",
+            JSON.stringify({
+                Simulator: $("#Simulator").val(),
+                SN: $("#SN").val(),
+                Info: {
+                Computer: $("#Computer").val(),
+                Cyc: $("#Cyc").val(),
+                Size: $("#Size").val(),
+                Typ: $("#Typ").val()
+                }
+            }),
+            function(data, status){
+            alert("Data: " + data + "\nStatus: " + status);
+            },
+
+            'json');
+        });
+    });
+        
         </script>
 </head>
 <body>
