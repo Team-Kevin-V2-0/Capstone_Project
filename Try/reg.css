@@ -1,6 +1,6 @@
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em,
- img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, dl, dt, dd, ol, nav ul, nav li, fieldset, form, label, legend, table,
- caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby,
+ img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, dl, dt, dd, ol, nav li, fieldset, form, label, legend, table,
+ caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, hgroup, menu, nav, output, ruby,
  section, summary, time, mark, audio, video
  {
   margin: 0;
@@ -11,11 +11,11 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   vertical-align: baseline;
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-  display: block;
+article, aside, details, figcaption, figure, footer, hgroup, menu, nav, section {
+  display: inline-block;
 }
 
-ol, ul {
+ol{
   list-style: none;
   margin: 0px;
   padding: 0px;
@@ -106,15 +106,14 @@ img {
 
 /*-- end reset --*/
 body {
-  background: #76b852;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, #76b852, #8DC26F);
-  background: -moz-linear-gradient(to top, #76b852, #8DC26F);
-  background: -o-linear-gradient(to top, #76b852, #8DC26F);
-  background: linear-gradient(to top, #76b852, #8DC26F);
+  background-color: aliceblue;
+  background-image: url(b.jpg);
+  height: 100%;
+  background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
-  font-family: 'Roboto', sans-serif;
+  justify-content: center;
+  align-items: center
+ 
 }
 
 h1 {
@@ -215,11 +214,11 @@ input[type="submit"] {
   color: #555555;
   background: #fff;
   width: 50%;
-  -webkit-appearance: none;
+  position: relative;
   border-radius: 25px;
   padding: 0.9em;
   cursor: pointer;
-  padding: 0.9em;
+  
   margin: 2em 0;
   border: 1px solid #fff;
   letter-spacing: 4px;
@@ -361,11 +360,20 @@ input.checkbox:checked:after {
 
 /*-- //copyright --*/
 .wrapper {
+  width: 100%;
   position: relative;
   overflow: hidden;
-  background: #fff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
 }
+
+.wrapper h1{
+  font-family: 'Courier New', Courier, monospace;
+  color: #fff;
+} 
 
 .colorlib-bubbles {
   position: absolute;
@@ -776,4 +784,19 @@ input.checkbox:checked:after {
     text-align: center;
     margin-bottom: 30px;
   }
+}
+
+header{
+  text-align: center;
+}
+  
+#menu ul{
+  list-style: none;
+  font-size: 50px;
+}
+#menu li{
+  display: inline;
+}
+#menu li a{
+  color: aliceblue;
 }

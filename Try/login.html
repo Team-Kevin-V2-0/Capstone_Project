@@ -71,6 +71,17 @@
 	</head>
 
 	<body>
+	<header>
+		<div id="menu">
+			  <ul>
+				<li><a href="#"> Home</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<li><a href="#"> About</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<li><a href="#"> Contact</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<li><a href="#"> Location</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			  </ul>
+		  </div>
+
+	</header>
 		<div class="main wrapper">
 			<h1>LOGIN FORM</h1>
 			<div class="main-agileinfo">
@@ -96,6 +107,23 @@
 			x.type = "password";
 		}
 		}
+	</script>
+
+	<script>
+		$(function(){
+			var str = '#len'; //increment by 1 up to 1-nelemnts
+			$(document).ready(function(){
+				var i, stop;
+				i = 1;
+				stop = 4; //num elements
+				setInterval(function(){
+				if (i > stop){
+					return;
+				}
+				$('#len'+(i++)).toggleClass('bounce');
+				}, 500)
+			});
+		});
 	</script>
 
 	</body>
