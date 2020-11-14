@@ -1,5 +1,5 @@
 'use strict';
-const AWS = require('aws-sdk');
+ const AWS = require('aws-sdk');
 
 
 exports.handler = async (event, context) => {
@@ -7,40 +7,25 @@ exports.handler = async (event, context) => {
     const documentClient = new AWS.DynamoDB.DocumentClient();
     let responseBody = "";
     let statusCode = 0;
+    let datas ="";
 
-    //const {employeeID, name, email, password, role} = JSON.parse(event.body);
-
-    /*var input = {
-    "Simulator": event.Simulator,
-    "name": event.name,
-    "month": event.month,
-    "year": event.year,
-    "credit": event.credit,
-    "debit": event.debit
-    };*/
-
+    
     const params ={
-        //Item: input,
-        //TableName: "Storage1"
         TableName: "Storage1",
         Item: {
-            Simulator: event.Simulator,
-            SN: event.SN,
-            Info: {
-                Computer: event.computer,
-                Cycle: event.cycle,
-                Date: event.date,
-                Size: event.size,
-                Type: event.type
-            }
+            "Simulator": event.Simulator, 
+            "SN": event.SN,
+            "Info": event.Info
         }
     };
 
 
     try {
         const data = await documentClient.put(params).promise();
+        datas = data
         responseBody = JSON.stringify(data);
-        statusCode = 201;
+        console.log(responseBody);
+        statusCode = 201;    
     } catch (err) {
         responseBody = `Unable to add HardDrive: ${err}`;
         statusCode = 401;
@@ -54,6 +39,6 @@ exports.handler = async (event, context) => {
         body: responseBody
     };
 
-    return response;
+    return (params.Item.SN);
 
-};
+}; 
