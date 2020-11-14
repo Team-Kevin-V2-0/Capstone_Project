@@ -12,13 +12,13 @@ exports.handler = async (event, context) => {
     let responseBody = "";
     let statusCode = 0;
 
-    const {Simulator, SN} = JSON.parse(event.body);
+  //  const {Simulator, SN} = JSON.parse(event.body);
 
-    var params ={
+    const params ={
         TableName: "Storage1",
         Key: {
-            Simulator: Simulator,
-            SN: SN
+            "Simulator": event.Simulator,
+            "SN": event.SN
         }
     };
 
