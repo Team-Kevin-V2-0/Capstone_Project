@@ -13,7 +13,7 @@ exports.handler = async (event, context) => {
     var params ={
         TableName: "EmployeeDB",
         Key: {
-            employeeID: event.employeeID
+            "employeeID": event.employeeID
         }
     };
 
