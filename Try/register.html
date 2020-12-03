@@ -58,7 +58,12 @@
 					<input class="text email" type="email" id="employeeEmail" name="email" placeholder="Employee Email" required="">
 					<input class="text" type="password" id= "employeePassword" name="password" placeholder="Enter Password"id="psw" name="psw" required=""> 
 					<input class="text w3lpass" type="password" name="password" id="psw" name="psw" placeholder="Confirm Password" id="myInput" required="">
-					<input class="text" type="text" id="employeeRole" name="emprole" placeholder="Enter Employee Role" required=""><br><br>
+					<label> EmployeeRole </label>
+					<select id="employeeRole" name="classification">
+					<option value="Administrator">Administrator</option>
+					<option value="Employee">Employee</option>
+					<option value="Guest">Guest</option>
+					</select> <br>
 					<input type="checkbox" onclick="myFunction()">Show Password
 
 					<div class="wthree-text">
@@ -86,12 +91,5 @@
 		}
 	</script>
 
-	<button id="myButton" class="float-left submit-button" >Home</button>
-	<script type="text/javascript">
-		document.getElementById("myButton").onclick = function () {
-			location.href = "index.html";
-
-		};
-	</script>
 </body>
 </html>
