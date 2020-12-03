@@ -33,13 +33,21 @@
 		var isa = JSON.parse(ids);
 		var ii = JSON.stringify(isa.responseBody.Item.employeeID);
 		var id3 = JSON.stringify(isa.responseBody.Item.employeepasswd);
+		var empRole = JSON.stringify(isa.responseBody.Item.employeerole); 
+		empRole =  (empRole.replace(/"([^"]+(?="))"/g, '$1'));
 		//remove quotes
 		id3 = (id3.replace(/"([^"]+(?="))"/g, '$1'));
 		var id =document.getElementById('lid').value;
 		var id2 =document.getElementById('lpassword').value;
+		console.log(empRole);
 		if(statuscode==204){
 			if(id3 == id2){
-				location.href = "view_all.html";
+				if(empRole == "Administrator"){
+					location.href = "adminPa.html";
+				}
+				else{
+					location.href = "view_all.html";
+				}
 			}else{
 				alert('incorrect password');	
 		}
@@ -65,17 +73,7 @@
 	</head>
 
 	<body>
-	<header>
-		<div id="menu">
-			  <ul>
-				<li><a href="#"> Home</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<li><a href="#"> About</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<li><a href="#"> Contact</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<li><a href="#"> Location</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			  </ul>
-		  </div>
-
-	</header>
+	
 		<div class="main wrapper">
 			<h1>LOGIN FORM</h1>
 			<div class="main-agileinfo">
@@ -85,8 +83,6 @@
 						<input class="text" type="password" id="lpassword" name="lpassword" placeholder="Password" value="" id="myInput" required=""><br><br>
 						<input type="checkbox" onclick="myFunction()">Show Password
 						<input type="submit" value="Login" onclick="w()">
-
-						<p>For new Employees<a href="register.html"> REGISTER NOW</a></p>
 					</form>	
 				</div>
 			</div>
