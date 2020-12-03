@@ -144,3 +144,21 @@ textarea{
         display: none;
     }
 }
+
+#HDlist{
+	text-align: center;
+	color: #fff;
+}
+.haha{
+	text-align: center;
+	color: #fff;
+}
+
+#boo{
+	background-image: url("https://images.wallpaperscraft.com/image/cockpit_panel_display_169481_3176x4800.jpg");
+	background-size: cover;
+}
+
+.bbq{
+	color: #fff;
+}

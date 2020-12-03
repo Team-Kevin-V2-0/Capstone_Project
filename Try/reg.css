@@ -800,3 +800,8 @@ header{
 #menu li a{
   color: aliceblue;
 }
+#HDlist{
+  text-align: center;
+  font-size: large;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

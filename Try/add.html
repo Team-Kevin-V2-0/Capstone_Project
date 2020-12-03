@@ -12,7 +12,8 @@
     <script type="text/javascript">
     $(document).ready(function() {
         $('#add').on('click', function() {
-
+            let today = new Date();
+	        let date = (today.getMonth()+1)+'/'+(today.getDate())+'/'+(today.getFullYear());    
             $.post("https://plt5iufcl5.execute-api.us-east-2.amazonaws.com/APIDeploy1/storage",
             JSON.stringify({
                 Simulator: $("#Simulator").val(),
@@ -21,7 +22,8 @@
                 Computer: $("#Computer").val(),
                 Cyc: $("#Cyc").val(),
                 Size: $("#Size").val(),
-                Typ: $("#Typ").val()
+                Typ: $("#Typ").val(),
+                Backdate: "date"
                 }
             }),
             function(data, status){
@@ -44,7 +46,9 @@
         <nav id="sidebar">
 
             <div class= "sidebar-header">
+                <a href="view_all.html">
                 <img src="logo.png">
+            </a>
             </div>
             <ul class="lisst-unstyled components">
 
